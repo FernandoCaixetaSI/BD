@@ -1,0 +1,28 @@
+
+CREATE TABLE Aluno (
+                cpf_aluno INTEGER NOT NULL,
+                nome_Aluno VARCHAR(50) NOT NULL,
+                nascimento_Aluno DATE NOT NULL,
+                CONSTRAINT Aluno PRIMARY KEY (cpf_aluno)
+);
+
+
+CREATE TABLE Endereco (
+                cpf_aluno INTEGER NOT NULL,
+                logradouro VARCHAR(60) NOT NULL,
+                numero INTEGER NOT NULL,
+                complemento VARCHAR(60),
+                bairro VARCHAR(20) NOT NULL,
+                cidade VARCHAR(25) NOT NULL,
+                estado VARCHAR(25) NOT NULL,
+                cep INTEGER NOT NULL,
+                CONSTRAINT Endereco PRIMARY KEY (cpf_aluno)
+);
+
+
+ALTER TABLE Endereco ADD CONSTRAINT Aluno_Endereco_fk
+FOREIGN KEY (cpf_aluno)
+REFERENCES Aluno (cpf_aluno)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
